@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from "./components/Header";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Cart from "./pages/Cart";
+import Product from "./pages/Product";
+import Category from "./pages/Category";
+import Footer from "./components/Footer";
+import bannermens from "./assets/bannermens.png"
+import bannerwomens from "./assets/bannerwomens.png"
+import bannerkids from "./assets/bannerkids.png"
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main className="bg-primary text-tertiary">
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/mens" element={<Category category="men" banner={bannermens} />} />
+          <Route path="/womens" element={<Category category="women" banner={bannerwomens} />} />
+          <Route path="/kids" element={<Category category="kid" banner={bannerkids} />} />
+          <Route path="/product" element={<Product />}>
+            <Route path=":productId" element={<Product />} />
+          </Route>
+          <Route path="/cart-page" element={<Cart />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+    </main>
   );
 }
 
