@@ -11,7 +11,7 @@ const Login = () => {
                     <input type="password" placeholder='Password' className='h-14 w-full pl-5 bg-slate-900/5 outline-none rounded-xl' />
                 </div>
                 <button className='btn_dark_rounded my-5 w-full !rounded-md'>Continue</button>
-                <p className='text-black font-bold'>Already have an account? <span>Login</span></p>
+                <p className='text-black font-bold'>Already have an account? <span className='text-secondary'>Login</span></p>
                 <div className='flexCenter mt-6 gap-3'>
                     <input type="checkbox" name="" id="" />
                     <p>By continuing, i agree to the terms of use & privacy policy.</p>
