@@ -21,21 +21,28 @@ const CartItems = () => {
                 </thead>
                 <tbody>
                     {all_products.map((e) => {
+                        // Check if cartItems[e.id] is greater than 0
                         if (cartItems[e.id] > 0) {
-                            return <tr key={e.id} className="border-b border-slate-900/20 p-6 medium-14 text-center">
-                                <td className='flexCenter'><img src={e.image} alt="prdctImg" height={43} width={43}
-                                    className="rounded-lg ring-1 ring-slate-900/5 my-1" /></td>
-                                <td><div className='line-clamp-3'>{e.name}</div></td>
-                                <td>${e.new_price}</td>
-                                <td className='w-16 h-16 bg-white'>{cartItems[e.id]}</td>
-                                <td >${e.new_price * cartItems[e.id]}</td>
-                                <td>
-                                    <div className='bold-22 pl-14 '><TbTrash onClick={() => removeFromCart(e.id)} /></div>
-                                </td>
-                            </tr>
+                            // Return the table row if the condition is met
+                            return (
+                                <tr key={e.id} className="border-b border-slate-900/20 p-6 medium-14 text-center">
+                                    <td className='flexCenter'><img src={e.image} alt="prdctImg" height={43} width={43}
+                                        className="rounded-lg ring-1 ring-slate-900/5 my-1" /></td>
+                                    <td><div className='line-clamp-3'>{e.name}</div></td>
+                                    <td>${e.new_price}</td>
+                                    <td className='w-16 h-16 bg-white'>{cartItems[e.id]}</td>
+                                    <td>${e.new_price * cartItems[e.id]}</td>
+                                    <td>
+                                        <div className='bold-22 pl-14 '><TbTrash onClick={() => removeFromCart(e.id)} /></div>
+                                    </td>
+                                </tr>
+                            );
+                        } else {
+                            return null;
                         }
                     })}
                 </tbody>
+
             </table>
 
             <div className='flex flex-col gap-20 my-16 p-8 md:flex-row rounded-md bg-white w-full max-w-[666px]'>
